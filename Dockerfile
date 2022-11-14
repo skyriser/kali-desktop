@@ -15,6 +15,6 @@ ENV KALI_DESKTOP ${KALI_DESKTOP}
 ENTRYPOINT ["/init"]
 ARG S6_OVERLAY_VERSION=3.1.2.1
 ADD https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-x86_64.tar.xz /tmp/
-RUN gunzip -c /tmp/s6-overlay-x86_64.tar.xz | tar -xf - -C / && \
+RUN tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz && \
     rm -f /tmp/s6-overlay-x86_64.tar.xz
 COPY etc/ /etc
